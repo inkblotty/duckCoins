@@ -1,0 +1,17 @@
+{
+  "name": "cryptoreactnode",
+  "version": "1.0.0",
+  "description": "finds and compares rates of cryptocurrency and stores data to show trends",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "inkblotty",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.15.3",
+    "mongoose": "^4.9.9",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4"
+  }
+}
