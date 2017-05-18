@@ -6,3 +6,10 @@
 - Stores pricing data inside local MongoDB for comparisons
 
 ** plus configures bitcoind to create 3 bitcoin addresses
+
+Log:
+-----
+#### Day 1
+- 45 min
+- set up & config
+
