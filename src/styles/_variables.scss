@@ -1,0 +1,57 @@
+/*
+VARIABLES: CONTENTS
+- fonts
+- colors
+- z-indices & magic-numbers
+*/
+
+$codeFont: monospace;
+$mainFont: Arial, sans-serif;
+
+/*
+=== COLORS ===
+*/
+// greyscales colors
+$black:     #000;
+$darkGray:  #3f3f3f;
+$gray:      #bdbdbd;
+$lightGray: #eee;
+$white:     #efefef;
+
+$darkPurple:  #443d5c;
+$lightBlue:   #90b5e2;
+$blue:        darken($lightBlue, 15%);
+$green:       #8aac7a;
+$darkGreen:   darken($green, 15%);
+$palePink:    #efe5ee;
+
+/*
+=== MAGIC NUMBERS ===
+*/
+$textExtraSmall:  8px; // avoid for accessibility
+$textSmall:       12px;
+$textNormal:      16px;
+$textMedium:      18px;
+$textLarge:       20px;
+$textXLarge:      24px;
+$textXXLarge:     32px;
+$textXXXLarge:    48px;
+
+$padMarSmall: 10px;
+$padMarMedium: 20px;
+$padMarLarge: 50px;
+
+$radiusSmall: 5px;
+$radiusMedium: 10px;
+$radiusCircle: 50%;
+
+$weightThin:    300;
+$weightNormal:  400;
+$weightBold:    600;
+
+$z1:    1;
+$z2:    2;
+$z5:    5;
+$z10:   10;
+$z100:  100;
+$z1000: 1000;

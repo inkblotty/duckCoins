@@ -1,0 +1,17 @@
+/* 
+=== OBJECT-LEVEL ELEMENTS ===
+- used as base throughout the app
+- not attached to any specific elements, but widespread effect
+- change with caution
+*/
+
+.o {
+  // default flex-container is aligned to flex-start; use utility classes for different alignment
+  &-flex-container {
+    align-content: flex-start;
+    align-items: flex-start;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+}

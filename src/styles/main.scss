@@ -1,0 +1,59 @@
+@import './_variables';
+@import './objects';
+@import './utilities';
+
+// only native element styles here
+body,
+html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+body {
+  background-color: $white;
+  color: $black;
+  font-family: $mainFont;
+  font-size: $textNormal;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: $weightBold;
+  letter-spacing: 0.1em;
+  text-align: center;
+  width: 100%;
+}
+
+h1 {
+  font-size: $textXXLarge;
+}
+
+h2 {
+  font-size: $textXLarge;
+}
+
+h3 {
+  font-size: $textLarge;
+}
+
+h4 {
+  font-size: $textMedium;
+}
+
+h5 {
+  font-size: $textNormal;
+}
+
+h6 {
+  font-size: $textSmall;
+}
+
+code {
+  font-family: $codeFont;
+}

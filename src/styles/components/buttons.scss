@@ -1,0 +1,33 @@
+@import '../_variables';
+
+.c-button {
+	background-color: $lightBlue;
+	border: 0;
+	border-radius: $radiusSmall;
+	cursor: pointer;
+	font-size: $textMedium;
+	padding: $padMarSmall $padMarMedium;
+	text-align: center;
+
+	&--alt {
+		background-color: $green;
+
+		&:hover,
+		&:active,
+		&.is-active {
+			background-color: $darkGreen;
+		}
+	}
+
+	&:disabled,
+	&.is-disabled {
+		background-color: $gray;
+		cursor: not-allowed;
+	}
+
+	&:hover,
+	&:active,
+	&.is-active {
+		background-color: $blue;
+	}
+}

@@ -1,0 +1,35 @@
+.u {
+  &-align-center--horizontal {
+    align-content: center;
+    justify-content: center;
+  }
+
+  &-align-center--vertical {
+    align-items: center;
+  }
+
+  &-align-end--horizontal {
+    align-content: flex-end;
+    justify-content: flex-end;
+  }
+
+  &-align-end--vertical {
+    align-items: flex-end;
+  }
+
+  &-justify-around {
+    justify-content: space-around;
+  }
+
+  &-justify-between {
+    justify-content: space-between;
+  }
+
+  &-no-margin {
+    margin: 0 !important;
+  }
+
+  &-xxx-large {
+    font-size: $textXXXLarge;
+  }
+}

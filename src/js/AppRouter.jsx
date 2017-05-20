@@ -4,6 +4,8 @@ import { Router, Route, IndexRoute, IndexRedirect, browserHistory } from 'react-
 import FourOhFour from './pages/FourOhFour.jsx';
 import HomeContainer from './containers/HomeContainer.jsx';
 
+import '../styles/main.scss';
+
 const AppRouter = () => {
 	return (
 		<Router history={ browserHistory }>
