@@ -24,6 +24,7 @@ app.get('*', function(req, res) {
 	res.sendFile(path.join(PUBLIC_DIR, 'index.html'));
 });
 
+// api routes
 var api = require('./api.js');
 app.get('/api/coins', api.listCoins);
 app.get('/api/coin/:coinName', api.findOneCoin);
