@@ -9,11 +9,13 @@
 ** plus configures bitcoind to create 3 bitcoin addresses
 
 ## Use:
--------
-- run a local version of mongo (`mongod` in one window, `mongo` in another) and `use cryptobd`
+- run a local version of mongo (`mongod` in one window, `mongo` in another) and `use cryptodb`
+- For developmernt:
+  -- run `npm run dev`
+- For production:
+  -- run `npm run prod` to bundle your resources, then `npm start`
 
-Log:
------
+## Log:
 #### Day 1
 - 45 min
 - set up & config
