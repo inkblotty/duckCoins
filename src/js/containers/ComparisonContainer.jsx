@@ -3,34 +3,48 @@ import axios from 'axios';
 
 import Loading from 'presentation/Loading.jsx';
 
+import { dateTimeFormat } from 'helpers/formatters.js';
+
 class ComparisonContainer extends React.Component {
   state = {
-    activeCoins: [],
+    latest: {},
+    allSources: {},
+    activeBase: 'USD',
+    date: 'latest',
     isLoading: true,
     loadingMessage: ''
   }
 
-  componentDidMount = () => {
-    this.setState({
-      loadingMessage: 'Grabbing today\'s rates...'
-    });
-
-    // grab current data from btc-e
-    axios.get('/api/btc-e/today')
+  getLatest = () => {
+    axios.get('/api/latest')
       .then((response) => {
-        console.log(response);
+        let newLatest = response.data;
+        let newSources = this.state.allSources;
+        let currentTime = dateTimeFormat(new Date());
+        newSources[currentTime] = newLatest;
 
         this.setState({
+          allSources: newSources,
+          latest: newLatest,
           isLoading: false,
         })
       })
       .catch((err) => {
         console.log(err);
       });
+  };
+
+  componentDidMount = () => {
+    this.setState({
+      loadingMessage: 'Grabbing the latest rates...'
+    }, () => {
+      this.getLatest();
+    });
   }
 
   render() {
     let state = this.state;
+    console.log(state);
 
     return (
       <div>
@@ -42,7 +56,7 @@ class ComparisonContainer extends React.Component {
         :
           <div>
             Today's Values
-            { state.activeCoins }
+            
           </div>
         }
       </div>

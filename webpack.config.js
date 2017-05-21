@@ -32,13 +32,14 @@ var config = {
     ]
   },
   resolve: {
-    root: path.resolve(CLIENT_DIR),
+    root: path.resolve(__dirname),
     alias: {
-      containers: 'js/containers',
-      presentation: 'js/presentation',
-      pages: 'js/pages',
-      styles: 'styles',
-      images: 'images'
+      containers: 'src/js/containers',
+      presentation: 'src/js/presentation',
+      pages: 'src/js/pages',
+      styles: 'src/styles',
+      images: 'src/images',
+      helpers: 'helpers'
     },
     extensions: ['', '.js', '.jsx', '.scss']
   }

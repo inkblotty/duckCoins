@@ -31,7 +31,7 @@ router.post('/addCoinValue/:coinName', api.addCoinValue);
 // returns latest values in usd and btc
 // first pings db to see if coins have values for today
 // then pings individual apis to fill in missing data
-router.get('/today', function(req, res, next) {
+router.get('/latest', function(req, res, next) {
   var currentCoins = {
     'btc-e' : {},
     'poloniex': {},
@@ -84,10 +84,6 @@ router.get('/today', function(req, res, next) {
     });
 
   var promiseList = [p1, p2, p3, p4, p5, p6];
-  // if database doesn't have today's data, add p1, p2, etc.
-  // promiseList.push(p1);
-  // promiseList.push(p2);
-  // promiseList.push(p3);
 
   Promise.all(promiseList)
     .then(() => {
