@@ -15,6 +15,7 @@ router.get('/', function(req, res) {
   res.write('/addCoin'+'<br>');
   res.write('/addCoinValue/:coinName'+'<br>');
   res.write('<br>'+'External Routes:'+'<br>');
+  res.write('/today'+'<br>');
   res.write('/btc-e/today'+'<br>');
   res.end('<br>'+':)')
 });
@@ -28,6 +29,8 @@ router.post('/addCoinValue/:coinName', api.addCoinValue);
 // https://github.com/CoinCapDev/CoinCap.io
 
 // returns today's values in usd
+// first pings db to see if coins have values for today
+// then pings individual apis to fill in missing data
 router.get('/today', function(req, res, next) {
   var currentCoins = {
     'btc' : {},
@@ -48,7 +51,12 @@ router.get('/today', function(req, res, next) {
       currentCoins.btc = data['btc_usd'];
     });
 
-  Promise.all([p1, p2])
+  var promiseList = [];
+  // if database doesn't have today's data, add p1, p2, etc.
+  promiseList.push(p1);
+  promiseList.push(p2);
+
+  Promise.all(promiseList)
     .then(() => {
       res.send(currentCoins);
     });

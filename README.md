@@ -7,6 +7,8 @@
 
 ** plus configures bitcoind to create 3 bitcoin addresses
 
+- API routes listed through `/api'
+
 Log:
 -----
 #### Day 1
@@ -19,11 +21,12 @@ Log:
 - setting up Mongoose schemas
 
 ### Day 3
-- 4 hours
+- 7 hours
 - reworking db setup
 - creating api
 - configuring webpack
 - setting up router & components
 - creating base styles
 
-- connecting to BTC-E
+- connecting to BTC-E server-side
+- begin aggregating data from all current rates
