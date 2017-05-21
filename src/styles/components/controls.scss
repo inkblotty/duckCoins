@@ -1,0 +1,14 @@
+@import '../_variables';
+
+.c-controls {
+  padding: $padMarSmall $padMarMedium;
+  margin-left: $padMarMedium;
+
+  label {
+    margin-right: $padMarSmall;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}

@@ -2,7 +2,7 @@ import React from 'react';
 
 const BarGraph = (props) => {
   return (
-    <div>bar graph placeholder</div>
+    <div className='c-box'>bar graph placeholder</div>
   )
 }
 
