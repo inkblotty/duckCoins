@@ -17,3 +17,13 @@ Log:
 - 45 min
 - connecting to Mongo
 - setting up Mongoose schemas
+
+### Day 3
+- 4 hours
+- reworking db setup
+- creating api
+- configuring webpack
+- setting up router & components
+- creating base styles
+
+- connecting to BTC-E

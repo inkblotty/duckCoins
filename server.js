@@ -2,6 +2,8 @@ var path = require('path');
 var express = require('express');
 var mongoose = require('mongoose');
 
+var apirouter = require('./apirouter.js');
+
 var PUBLIC_DIR = path.join(__dirname, 'public');
 var PORT = 8080;
 var app = express();
@@ -19,19 +21,14 @@ db.once('open', function() {
 // serve files in public folder
 app.use(express.static(PUBLIC_DIR));
 
+// connect api routes
+app.use('/api', apirouter);
+
 // send index.html
 app.get('*', function(req, res) {
 	res.sendFile(path.join(PUBLIC_DIR, 'index.html'));
 });
 
-// api routes
-var api = require('./api.js');
-app.get('/api/coins', api.listCoins);
-app.get('/api/coin/:coinName', api.findOneCoin);
-app.get('/api/coin/:coinName/:date', api.findCoinValByDate);
-
-app.post('/api/addCoin', api.addCoin);
-app.post('/api/addCoinValue/:coinName', api.addCoinValue);
 
 app.listen(PORT);
 console.log('server started on port ' + PORT);

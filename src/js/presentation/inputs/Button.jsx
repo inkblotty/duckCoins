@@ -7,7 +7,7 @@ import 'styles/components/buttons.scss';
 const Button = (props) => {
   let { className, loading, onClick, text } = props;
   return (
-   <button className={ `o-flex-container c-button ${className ? className : ''}` } onClick={ onClick }>
+   <button className={ `o-flex-container c-btn ${className ? className : ''}` } onClick={ onClick }>
     { loading ?
       <Loading /> : '' }
     { text }

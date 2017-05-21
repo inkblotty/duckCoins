@@ -1,0 +1,22 @@
+@import '../_variables';
+
+.c-nav {
+  align-items: center;
+  display: flex;
+  font-size: $textMedium;
+  justify-content: space-between;
+  max-width: 100%;
+  padding: $padMarMedium $padMarLarge;
+
+  li {
+    margin-right: $padMarMedium;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  a {
+    color: black;
+  }
+}
