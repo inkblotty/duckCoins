@@ -40,7 +40,10 @@ class ComparisonContainer extends React.Component {
             { state.loadingMessage }
           </div>
         :
-          <div>Today's Values</div>
+          <div>
+            Today's Values
+            { state.activeCoins }
+          </div>
         }
       </div>
     )
