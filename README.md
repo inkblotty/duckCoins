@@ -4,10 +4,13 @@
 
 - Compares three cryptocurrencies using BTC-E, Poloniex, and CoinCap APIs
 - Stores currency data inside local MongoDB for comparisons
+- API routes listed through `/api`
 
 ** plus configures bitcoind to create 3 bitcoin addresses
 
-- API routes listed through `/api'
+## Use:
+-------
+- run a local version of mongo (`mongod` in one window, `mongo` in another) and `use cryptobd`
 
 Log:
 -----
@@ -27,6 +30,9 @@ Log:
 - configuring webpack
 - setting up router & components
 - creating base styles
-
 - connecting to BTC-E server-side
 - begin aggregating data from all current rates
+
+### Day 4
+- connecting to poloniex server-side
+

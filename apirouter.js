@@ -33,22 +33,29 @@ router.post('/addCoinValue/:coinName', api.addCoinValue);
 // then pings individual apis to fill in missing data
 router.get('/today', function(req, res, next) {
   var currentCoins = {
-    'btc' : {},
-    'ethereum': {},
+    'btc-e' : {},
+    'poloniex': {},
     'litecoin': {},
     'dash': {}
-  };
+  }; // grabbing bitcoin, ethereum, litecoin, and dash
 
   var p1 = rp({ uri: 'https://btc-e.com/api/3/ticker/btc_usd' })
     .then((response) => {
       var data = JSON.parse(response);
-      currentCoins.btc = data['btc_usd'];
+      currentCoins['btc-e'] = data['btc_usd'];
+      currentCoins['btc-e'].baseCurrency = 'USD';
     });
 
-  var p2 = rp({ uri: 'https://btc-e.com/api/3/ticker/btc_usd'})
+  var p2 = rp({ uri: 'https://poloniex.com/public?command=returnTicker'})
     .then((response) => {
       var data = JSON.parse(response);
-      currentCoins.btc = data['btc_usd'];
+      currentCoins['poloniex']['usd_btc'] = data['USDT_BTC'];
+      currentCoins['poloniex']['btc_dash'] = data['BTC_DASH'];
+      currentCoins['poloniex']['usd_dash'] = data['USDT_DASH'];
+      currentCoins['poloniex']['btc_eth'] = data['BTC_ETH'];
+      currentCoins['poloniex']['usd_eth'] = data['USDT_ETH'];
+      currentCoins['poloniex']['btc_ltc'] = data['BTC_LTC'];
+      currentCoins['poloniex']['usd_ltc'] = data['USDT_LTC'];
     });
 
   var promiseList = [];

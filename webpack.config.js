@@ -40,7 +40,7 @@ var config = {
       styles: 'styles',
       images: 'images'
     },
-    extensions: ['', '.js', '.jsx']
+    extensions: ['', '.js', '.jsx', '.scss']
   }
 };
 

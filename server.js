@@ -1,6 +1,7 @@
 var path = require('path');
 var express = require('express');
 var mongoose = require('mongoose');
+var opn = require('opn');
 
 var apirouter = require('./apirouter.js');
 
@@ -16,6 +17,7 @@ db.on('error', function(err) {
 });
 db.once('open', function() {
 	console.log('connected to mongo db');
+  opn('http://localhost:'+PORT);
 });
 
 // serve files in public folder
