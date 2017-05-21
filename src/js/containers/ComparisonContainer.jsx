@@ -115,7 +115,7 @@ class ComparisonContainer extends React.Component {
               <ComparisonControls dateOpts={ state.allDates } baseCurrencyOpts={ ['USD'] } selectedDate={ state.date }
                 selectedCurrency={ state.activeBase } />
             </div>
-            <div className='o-flex-container'>
+            <div className='o-flex-container o-content-container'>
               <ValueBox sources={ state.allSources[state.date] } date={ state.date } />
               <BestExchangeBox { ...state.highLows } />
             </div>

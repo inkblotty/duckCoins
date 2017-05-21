@@ -19,4 +19,27 @@
   a {
     color: black;
   }
+
+  @media screen and (max-width: 800px) {
+    ul {
+      min-width: 35%;
+    }
+
+    li {
+      margin-right: $padMarSmall;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+
+    .c-btn {
+      font-size: $textNormal;
+      padding: $padMarSmall;
+    }
+
+    .c-logo {
+      max-height: $textLarge;
+    }
+  }
 }

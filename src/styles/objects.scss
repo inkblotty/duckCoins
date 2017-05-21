@@ -6,6 +6,10 @@
 */
 
 .o {
+  &-content-container {
+    margin: $padMarSmall $padMarLarge;
+  }
+
   // default flex-container is aligned to flex-start; use utility classes for different alignment
   &-flex-container {
     align-content: flex-start;
