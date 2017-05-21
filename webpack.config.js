@@ -12,28 +12,33 @@ var config = {
   },
   devtool: 'source-map',
   module: {
-   loaders: [
-     {
-      test: /\.jsx?$/,
-      exclude: /node_modules/,
-      loader: 'babel',
-      query: {
-        presets: ['react', 'stage-0', 'es2015']
+    loaders: [
+      {
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        loader: 'babel',
+        query: {
+          presets: ['react', 'stage-0', 'es2015']
+        }
+      },
+      {
+        test: /\.scss$/,
+        loaders: ['style', 'css', 'sass']
+      },
+      {
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        loader: "file-loader?name=/public/icons/[name].[ext]"
       }
-     },
-     {
-      test: /\.scss$/,
-      loaders: ['style', 'css', 'sass']
-     }
-   ]
+    ]
   },
   resolve: {
     root: path.resolve(CLIENT_DIR),
     alias: {
-      containers: './js/containers',
-      presentation: './js/presentation',
-      pages: './js/pages',
-      styles: './styles'
+      containers: 'js/containers',
+      presentation: 'js/presentation',
+      pages: 'js/pages',
+      styles: 'styles',
+      images: 'images'
     },
     extensions: ['', '.js', '.jsx']
   }

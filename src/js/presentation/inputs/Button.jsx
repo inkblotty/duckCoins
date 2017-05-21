@@ -1,13 +1,16 @@
 import React from 'react';
 
-import 'styles/components/buttons.scss'; // gross path name
+import Loading from 'presentation/Loading';
+
+import 'styles/components/buttons.scss';
 
 const Button = (props) => {
+  let { className, loading, onClick, text } = props;
   return (
-   <button className={ `c-button ${props.className}` } onClick={ props.onClick }>
-     { props.loading ?
-      LoadingGif : '' }
-     { props.text }
+   <button className={ `o-flex-container c-button ${className ? className : ''}` } onClick={ onClick }>
+    { loading ?
+      <Loading /> : '' }
+    { text }
    </button>
   )
 }

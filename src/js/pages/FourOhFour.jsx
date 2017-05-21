@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-import Button from '../presentation/inputs/Button.jsx';
+import Button from 'presentation/inputs/Button.jsx';
 
-import '../../styles/main.scss';
+import 'styles/main.scss';
 
 const FourOhFour = () => {
   return (

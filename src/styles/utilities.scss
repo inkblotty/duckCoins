@@ -25,6 +25,10 @@
     justify-content: space-between;
   }
 
+  &-margin--x-small {
+    margin: $padMarXSmall;
+  }
+
   &-no-margin {
     margin: 0 !important;
   }

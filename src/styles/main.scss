@@ -2,7 +2,9 @@
 @import './objects';
 @import './utilities';
 
-// only native element styles here
+@import './typography';
+
+// only native element reset-type styles
 body,
 html {
   height: 100%;
@@ -18,42 +20,15 @@ body {
   font-size: $textNormal;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-weight: $weightBold;
-  letter-spacing: 0.1em;
-  text-align: center;
-  width: 100%;
+a {
+  text-decoration: none;
 }
 
-h1 {
-  font-size: $textXXLarge;
-}
+li {
+  list-style-type: none;
 
-h2 {
-  font-size: $textXLarge;
-}
-
-h3 {
-  font-size: $textLarge;
-}
-
-h4 {
-  font-size: $textMedium;
-}
-
-h5 {
-  font-size: $textNormal;
-}
-
-h6 {
-  font-size: $textSmall;
-}
-
-code {
-  font-family: $codeFont;
+  &:before {
+    margin: 0;
+    padding: 0;
+  }
 }
