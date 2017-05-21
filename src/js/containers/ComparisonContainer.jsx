@@ -12,7 +12,7 @@ class ComparisonContainer extends React.Component {
 
   componentDidMount = () => {
     this.setState({
-      loadingMessage: 'Grabbing current exchange rates...'
+      loadingMessage: 'Grabbing today\'s rates...'
     });
 
     // grab current data from btc-e
