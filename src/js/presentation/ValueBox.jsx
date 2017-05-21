@@ -2,18 +2,22 @@ import React from 'react';
 
 import { dateFormatHuman } from 'helpers/formatters.js';
 
+import 'styles/components/box.scss';
+
 const ValueBox = (props) => {
   let { date, sources } = props;
-  let valList = Object.keys(sources).map((source) => {
-    let rows = Object.keys(source).map((coinName, i) => {
-      <li>
-        { coinName }: source.coinName
-      </li>
+  let valList = Object.keys(sources).map((source, indx) => {
+    let rows = Object.keys(sources[source]).map((coinName, i) => {
+      return (
+        <li key={ `coinVal-${i}` }>
+          { coinName }: { sources[source][coinName] }
+        </li>
+      );
     });
 
     return (
-      <li>
-        <h4>{ source }:</h4>
+      <li key={ `source-${indx}-${source}` }>
+        <h4 className='u-left-align'>{ source }:</h4>
         <ul>
           { rows }
         </ul>
@@ -21,8 +25,8 @@ const ValueBox = (props) => {
     )
   })
   return (
-    <div className='c-box'>
-      <h3>{ date != 'latest' ? dateFormatHuman(date) : date } Values</h3>
+    <div className='c-box c-box--val'>
+      <h3 className='u-left-align'>{ date ? dateFormatHuman(new Date(date)) : 'Latest' }</h3>
       <ul>
         { valList }
       </ul>

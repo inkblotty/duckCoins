@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 
 import Loading from 'presentation/Loading.jsx';
+import ValueBox from 'presentation/ValueBox.jsx';
 
 import { dateTimeFormat } from 'helpers/formatters.js';
 
@@ -10,7 +11,7 @@ class ComparisonContainer extends React.Component {
     latest: {},
     allSources: {},
     activeBase: 'USD',
-    date: 'latest',
+    date: '',
     isLoading: true,
     loadingMessage: ''
   }
@@ -25,6 +26,7 @@ class ComparisonContainer extends React.Component {
 
         this.setState({
           allSources: newSources,
+          date: currentTime,
           latest: newLatest,
           isLoading: false,
         })
@@ -44,7 +46,6 @@ class ComparisonContainer extends React.Component {
 
   render() {
     let state = this.state;
-    console.log(state);
 
     return (
       <div>
@@ -54,10 +55,7 @@ class ComparisonContainer extends React.Component {
             { state.loadingMessage }
           </div>
         :
-          <div>
-            Today's Values
-            
-          </div>
+          <ValueBox sources={ state.allSources[state.date] } date={ state.date } />
         }
       </div>
     )

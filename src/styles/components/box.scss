@@ -1,0 +1,12 @@
+@import '../_variables';
+
+.c-box {
+  background-color: $trueWhite;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+  padding: $padMarSmall $padMarMedium;
+
+  &--val {
+    margin: 0 $padMarSmall 0 $padMarLarge;
+    max-width: 300px;
+  }
+}
