@@ -10,7 +10,7 @@ import { dateTimeFormat } from 'helpers/formatters.js';
 
 class ComparisonContainer extends React.Component {
   state = {
-    latest: {},
+    active: {},
     allDates: [],
     allSources: {},
     activeBase: 'USD',
@@ -18,12 +18,11 @@ class ComparisonContainer extends React.Component {
     highLows: {},
     isLoading: true,
     loadingMessage: ''
-  }
+  };
 
   getLatest = () => {
     axios.get('/api/latest')
       .then((response) => {
-        console.log(response.data);
         let newLatest = response.data.currentCoins;
         let newSources = this.state.allSources;
         let currentTime = dateTimeFormat(new Date());
@@ -40,7 +39,7 @@ class ComparisonContainer extends React.Component {
           allSources: newSources,
           date: currentTime,
           highLows: newHighLows,
-          latest: newLatest,
+          active: newLatest,
           isLoading: false,
         })
       })
@@ -49,11 +48,54 @@ class ComparisonContainer extends React.Component {
       });
   };
 
+  getAllDates = () => {
+    axios.get('/api/dates')
+      .then((response) => {
+        this.setState({
+          allDates: response.data
+        });
+      });
+  };
+
+  getValsByDate = (dateTimeStr) => {
+    // if we've already grabbed that date
+    if (this.state.allSources[dateTimeStr]) {
+      this.setState({
+        date: dateTimeStr,
+        active: this.state.allSources[dateTimeStr]
+      });
+    } else {
+      this.setState({
+        isLoading: true,
+      });
+
+      axios.get(`/api/history/${dateTimeStr}`)
+        .then((response) => {
+          let newActive = response.data;
+          let newSources = this.state.allSources;
+          newSources[dateTimeStr] = newActive;
+
+          let newDates = this.state.allDates;
+          if (newDates.indexOf(dateTimeStr) === -1) {
+            newDates.push(dateTimeStr);
+          }
+
+          this.setState({
+            active: newActive,
+            allDates: newDates,
+            allSources: newSources,
+            isLoading: false
+          })
+        });
+    }
+  };
+
   componentDidMount = () => {
     this.setState({
       loadingMessage: 'Grabbing the latest rates...'
     }, () => {
       this.getLatest();
+      this.getAllDates();
     });
   }
 

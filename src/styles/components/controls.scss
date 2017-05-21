@@ -2,10 +2,10 @@
 
 .c-controls {
   padding: $padMarSmall $padMarMedium;
-  margin-left: $padMarMedium;
+  margin: $padMarSmall $padMarLarge;
 
   label {
-    margin-right: $padMarSmall;
+    margin-right: $padMarMedium;
 
     &:last-child {
       margin-right: 0;

@@ -23,7 +23,7 @@ const ValueBox = (props) => {
         </ul>
       </li>
     )
-  })
+  });
   return (
     <div className='c-box c-box--val'>
       <h3 className='u-left-align'>{ date ? dateFormatHuman(new Date(date)) : 'Latest' }</h3>

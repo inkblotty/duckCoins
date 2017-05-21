@@ -11,12 +11,14 @@ router.get('/', function(req, res) {
   res.write('Db Routes:'+'<br>');
   res.write('/history'+'<br>');
   res.write('/history/:dateTime'+'<br>');
+  res.write('/dates'+'<br>');
   res.write('/addTime'+'<br>');
   res.write('<br>'+'External Routes:'+'<br>');
   res.write('/today'+'<br>');
   res.end('<br>'+':)')
 });
 router.get('/history', api.listHistory);
+router.get('/dates', api.listHistoryKeys);
 router.get('/history/:dateTime', api.findOneTime);
 router.post('/addTime', api.addTime);
 
@@ -39,7 +41,7 @@ router.get('/latest', function(req, res, next) {
       'ltc_highest':  [null, ''],
       'ltc_lowest':   [null, '']
     }
-  }; // grabbing bitcoin, ethereum, litecoin, and dash
+  };
 
   function processCoinCap(response, coin) {
     var data = JSON.parse(response);
