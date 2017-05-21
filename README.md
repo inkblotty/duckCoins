@@ -21,7 +21,7 @@ Log:
 - setting up Mongoose schemas
 
 ### Day 3
-- 7 hours
+- 6 hours
 - reworking db setup
 - creating api
 - configuring webpack
