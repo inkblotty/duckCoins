@@ -37,9 +37,12 @@ function pingAPIsEachFiveMins() {
   setTimeout(function() {
     console.log('pinging apis');
     api.callExternalAPIs();
+    pingAPIsEachFiveMins();
   }, 300000);
 }
 
 
 app.listen(PORT);
 console.log('server started on port ' + PORT);
+
+pingAPIsEachFiveMins();

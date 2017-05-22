@@ -108,11 +108,12 @@ class ComparisonContainer extends React.Component {
       this.getLatest();
       this.getAllDates();
     });
+
+    window.setTimeout(() => { this.getAllDates(); }, 300000);
   }
 
   render() {
     let state = this.state;
-    console.log(state.highLows);
 
     return (
       <div>

@@ -37,8 +37,10 @@ a cryptocurrency comparison app
 - begin aggregating data from all current rates
 
 ### Day 4
-- 6 hours
+- 7 hours
 - connecting to poloniex and coincap server-side
 - grabbing high/low values for each coin
 - rendering rates and best exchanges client side
 - reworking db schema to work better with apis
+- making server and comparison container look for new data every 5 min
+- cleaning up data flow
