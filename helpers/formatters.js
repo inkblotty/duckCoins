@@ -11,5 +11,15 @@ exports.dateTimeFormat = function(dateObj) {
 
 exports.dateFormatHuman = function(dateObj) {
   var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
-  return `${months[dateObj.getMonth()]} ${dateObj.getDate()}, ${dateObj.getFullYear()} at ${dateObj.getHours()}:${padTime(dateObj.getSeconds())}`;
+  var hour = dateObj.getHours();
+  var amPm = 'AM';
+  if (hour > 12) {
+    amPm = 'PM';
+    hour = hour - 12;
+  } else if (hour === '0') {
+    hour = 12;
+  } else if (hour === 12) {
+    amPm = 'PM';
+  }
+  return `${months[dateObj.getMonth()]} ${dateObj.getDate()}, ${dateObj.getFullYear()} at ${hour}:${padTime(dateObj.getMinutes())} ${amPm}`;
 }

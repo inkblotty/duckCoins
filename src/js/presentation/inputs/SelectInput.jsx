@@ -10,7 +10,7 @@ const SelectInput = (props) => {
   return (
     <label htmlFor={ name }>
       { labelText }
-      <select name={ name } id={ name } className='c-input--select' onChange={ onChange }>
+      <select value={ val } name={ name } id={ name } className='c-input--select' onChange={ onChange }>
         { opts }
       </select>
     </label>

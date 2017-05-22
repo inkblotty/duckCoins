@@ -15,6 +15,7 @@ class ComparisonContainer extends React.Component {
     allSources: {},
     activeBase: 'USD',
     date: '',
+    hideHighLows: false,
     highLows: {},
     isLoading: true,
     loadingMessage: ''
@@ -23,11 +24,12 @@ class ComparisonContainer extends React.Component {
   getLatest = () => {
     axios.get('/api/latest')
       .then((response) => {
-        let { date, ...newLatest } = response.data.currentCoins;
+        let { date, highLows, ...newLatest } = response.data;
         let newSources = this.state.allSources;
         newSources[date] = newLatest;
 
-        let newHighLows = response.data.highLows;
+        let newHighLows = this.state.highLows;
+        newHighLows[date] = highLows;
         let newDates = this.state.allDates;
         if (newDates.indexOf(date) === -1) {
           newDates.push(date);
@@ -50,7 +52,6 @@ class ComparisonContainer extends React.Component {
   getAllDates = () => {
     axios.get('/api/dates')
       .then((response) => {
-        console.log('all dates: ' , response.data);
         this.setState({
           allDates: response.data
         });
@@ -71,26 +72,31 @@ class ComparisonContainer extends React.Component {
     } else {
       this.setState({
         isLoading: true,
+      }, () => {
+        axios.get(`/api/history/${dateTimeStr}`)
+          .then((response) => {
+            let { __v, date, _id, highLows, ...newActive } = response.data;
+            let newSources = this.state.allSources;
+            newSources[dateTimeStr] = newActive;
+
+            let newDates = this.state.allDates;
+            if (newDates.indexOf(dateTimeStr) === -1) {
+              newDates.push(dateTimeStr);
+            }
+
+            let newHighLows = this.state.highLows;
+            newHighLows[dateTimeStr] = highLows;
+
+            this.setState({
+              active: newActive,
+              allDates: newDates,
+              allSources: newSources,
+              date: dateTimeStr,
+              highLows: newHighLows,
+              isLoading: false
+            })
+          });
       });
-
-      axios.get(`/api/history/${dateTimeStr}`)
-        .then((response) => {
-          let newActive = response.data;
-          let newSources = this.state.allSources;
-          newSources[dateTimeStr] = newActive;
-
-          let newDates = this.state.allDates;
-          if (newDates.indexOf(dateTimeStr) === -1) {
-            newDates.push(dateTimeStr);
-          }
-
-          this.setState({
-            active: newActive,
-            allDates: newDates,
-            allSources: newSources,
-            isLoading: false
-          })
-        });
     }
   };
 
@@ -98,6 +104,7 @@ class ComparisonContainer extends React.Component {
     this.setState({
       loadingMessage: 'Grabbing exchange rates...'
     }, () => {
+      // axios.get('/api/delete');
       this.getLatest();
       this.getAllDates();
     });
@@ -105,26 +112,27 @@ class ComparisonContainer extends React.Component {
 
   render() {
     let state = this.state;
+    console.log(state.highLows);
 
     return (
       <div>
-        { state.isLoading ?
-          <div className='o-flex-container c-loading-container'>
-            <Loading />
-            { state.loadingMessage }
-          </div>
-        :
+        <div>
           <div>
-            <div>
-              <ComparisonControls dateOpts={ state.allDates } baseCurrencyOpts={ ['USD'] } selectedDate={ state.date }
-                selectedCurrency={ state.activeBase } changeDate={ this.getValsByDate } />
+            <ComparisonControls dateOpts={ state.allDates } baseCurrencyOpts={ ['USD'] } selectedDate={ state.date }
+              selectedCurrency={ state.activeBase } changeDate={ this.getValsByDate } />
+          </div>
+          { state.isLoading ?
+            <div className='o-flex-container c-loading-container'>
+              <Loading />
+              { state.loadingMessage }
             </div>
+            :
             <div className='o-flex-container o-content-container'>
               <ValueBox sources={ state.allSources[state.date] } date={ state.date } />
-              <BestExchangeBox { ...state.highLows } />
+              <BestExchangeBox { ...state.highLows[state.date] } />
             </div>
-          </div>
-        }
+          }
+        </div>
       </div>
     )
   }

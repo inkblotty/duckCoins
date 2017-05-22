@@ -26,6 +26,16 @@ var historySchema = new Schema({
     'usd_eth': String,
     'usd_ltc': String
   },
+  highLows: {
+    btc_highest: Array,
+    btc_lowest: Array,
+    dash_highest: Array,
+    dash_lowest: Array,
+    eth_highest: Array,
+    eth_lowest: Array,
+    ltc_highest: Array,
+    ltc_lowest: Array
+  }
 });
 
 // historySchema.pre('save', function(next) {

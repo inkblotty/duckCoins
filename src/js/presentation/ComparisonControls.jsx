@@ -9,7 +9,7 @@ const ComparisonControls = (props) => {
     <div className='o-flex-container c-box c-controls'>
       <SelectInput labelText='Date' name='datetime-filter' options={ props.dateOpts }
         val={ props.selectedDate } onChange={ props.changeDate } />
-      <SelectInput labelText='Base Currency' name='currency-filter' options={ props.baseCurrencyOpts } val={ props.selectedCurrency } />
+      <SelectInput labelText='Base Currency' name='currency-filter' options={ props.baseCurrencyOpts } />
     </div>
   )
 }

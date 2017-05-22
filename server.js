@@ -3,6 +3,7 @@ var express = require('express');
 var mongoose = require('mongoose');
 var opn = require('opn');
 
+var api = require('./api.js');
 var apirouter = require('./apirouter.js');
 
 var PUBLIC_DIR = path.join(__dirname, 'public');
@@ -31,6 +32,13 @@ app.use('/api', apirouter);
 app.get('*', function(req, res) {
 	res.sendFile(path.join(PUBLIC_DIR, 'index.html'));
 });
+
+function pingAPIsEachFiveMins() {
+  setTimeout(function() {
+    console.log('pinging apis');
+    api.callExternalAPIs();
+  }, 300000);
+}
 
 
 app.listen(PORT);
