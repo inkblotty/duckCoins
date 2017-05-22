@@ -16,7 +16,7 @@ var historySchema = new Schema({
     'usd_eth': String,
     'usd_ltc': String
   },
-  datetime: { type: String, default: dateTimeFormat(new Date()) },
+  date: { type: String, default: dateTimeFormat(new Date()) },
   poloniex: {
     'btc_dash': String,
     'btc_eth': String,
