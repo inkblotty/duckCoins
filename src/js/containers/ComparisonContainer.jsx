@@ -126,10 +126,8 @@ class ComparisonContainer extends React.Component {
 
     return (
       <div>
-        <div>
-          <ComparisonControls dateOpts={ state.allDates } baseCurrencyOpts={ ['USD'] } selectedDate={ state.date }
-            selectedCurrency={ state.activeBase } changeDate={ this.getValsByDate } />
-        </div>
+        <ComparisonControls dateOpts={ state.allDates } baseCurrencyOpts={ ['USD'] } selectedDate={ state.date }
+          selectedCurrency={ state.activeBase } changeDate={ this.getValsByDate } />
         { state.isLoading ?
           <div className='o-flex-container c-loading-container'>
             <Loading />
