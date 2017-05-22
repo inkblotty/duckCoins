@@ -17,8 +17,16 @@
     align-items: flex-end;
   }
 
+  &-duey-underline {
+    border-bottom: 2px solid $green;
+  }
+
   &-full-width {
     width: 100%;
+  }
+
+  &-huey-underline {
+    border-bottom: 2px solid $red;
   }
 
   &-justify-around {
@@ -31,6 +39,10 @@
 
   &-left-align {
     text-align: left;
+  }
+
+  &-louie-underline {
+    border-bottom: 2px solid $lightBlue;
   }
 
   &-margin--x-small {
