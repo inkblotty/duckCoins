@@ -127,22 +127,20 @@ class ComparisonContainer extends React.Component {
     return (
       <div>
         <div>
-          <div>
-            <ComparisonControls dateOpts={ state.allDates } baseCurrencyOpts={ ['USD'] } selectedDate={ state.date }
-              selectedCurrency={ state.activeBase } changeDate={ this.getValsByDate } />
-          </div>
-          { state.isLoading ?
-            <div className='o-flex-container c-loading-container'>
-              <Loading />
-              { state.loadingMessage }
-            </div>
-            :
-            <div className='o-flex-container o-content-container'>
-              <ValueBox sources={ state.allSources[state.date] } date={ state.date } />
-              <BestExchangeBox { ...state.highLows[state.date] } />
-            </div>
-          }
+          <ComparisonControls dateOpts={ state.allDates } baseCurrencyOpts={ ['USD'] } selectedDate={ state.date }
+            selectedCurrency={ state.activeBase } changeDate={ this.getValsByDate } />
         </div>
+        { state.isLoading ?
+          <div className='o-flex-container c-loading-container'>
+            <Loading />
+            { state.loadingMessage }
+          </div>
+          :
+          <div className='o-flex-container o-content-container'>
+            <ValueBox sources={ state.allSources[state.date] } date={ state.date } />
+            <BestExchangeBox { ...state.highLows[state.date] } />
+          </div>
+        }
       </div>
     )
   }
