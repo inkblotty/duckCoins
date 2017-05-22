@@ -23,21 +23,20 @@ class ComparisonContainer extends React.Component {
   getLatest = () => {
     axios.get('/api/latest')
       .then((response) => {
-        let newLatest = response.data.currentCoins;
+        let { date, ...newLatest } = response.data.currentCoins;
         let newSources = this.state.allSources;
-        let currentTime = dateTimeFormat(new Date());
-        newSources[currentTime] = newLatest;
+        newSources[date] = newLatest;
 
         let newHighLows = response.data.highLows;
         let newDates = this.state.allDates;
-        if (newDates.indexOf(currentTime) === -1) {
-          newDates.push(currentTime);
+        if (newDates.indexOf(date) === -1) {
+          newDates.push(date);
         }
 
         this.setState({
           allDates: newDates,
           allSources: newSources,
-          date: currentTime,
+          date,
           highLows: newHighLows,
           active: newLatest,
           isLoading: false,
@@ -51,14 +50,19 @@ class ComparisonContainer extends React.Component {
   getAllDates = () => {
     axios.get('/api/dates')
       .then((response) => {
+        console.log('all dates: ' , response.data);
         this.setState({
           allDates: response.data
         });
       });
   };
 
-  getValsByDate = (dateTimeStr) => {
+  getValsByDate = (e, dateTimeStr) => {
     // if we've already grabbed that date
+    if (e) {
+      dateTimeStr = e.target.value;
+    }
+
     if (this.state.allSources[dateTimeStr]) {
       this.setState({
         date: dateTimeStr,
@@ -92,7 +96,7 @@ class ComparisonContainer extends React.Component {
 
   componentDidMount = () => {
     this.setState({
-      loadingMessage: 'Grabbing the latest rates...'
+      loadingMessage: 'Grabbing exchange rates...'
     }, () => {
       this.getLatest();
       this.getAllDates();
@@ -101,7 +105,7 @@ class ComparisonContainer extends React.Component {
 
   render() {
     let state = this.state;
-    console.log(state);
+
     return (
       <div>
         { state.isLoading ?
@@ -113,7 +117,7 @@ class ComparisonContainer extends React.Component {
           <div>
             <div>
               <ComparisonControls dateOpts={ state.allDates } baseCurrencyOpts={ ['USD'] } selectedDate={ state.date }
-                selectedCurrency={ state.activeBase } />
+                selectedCurrency={ state.activeBase } changeDate={ this.getValsByDate } />
             </div>
             <div className='o-flex-container o-content-container'>
               <ValueBox sources={ state.allSources[state.date] } date={ state.date } />

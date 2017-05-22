@@ -3,12 +3,29 @@ var History = require('./models/HistoryModel.js');
 
 // post method
 exports.addTime = function(req, res) {
-  new History({
+  var newHistory = new History({
     date: req.body.date,
     'btc-e': req.body['btc-e'],
     coincap: req.body.coincap,
     poloniex: req.body.poloniex
-  }).save();
+  });
+
+  newHistory.save()
+    .then(() => {
+      res.send('new data saved');
+    });
+};
+
+// internal add only
+exports.addTimeInternal = function(data, callback) {
+  var newHistory = new History({
+    date: data.date,
+    'btc-e': data['btc-e'],
+    coincap: data.coincap,
+    poloniex: data.poloniex
+  });
+
+  return newHistory;
 };
 
 // get method
@@ -18,10 +35,10 @@ exports.listHistory = function(req, res) {
   });
 };
 
-// get just the history object keys
-exports.listHistoryKeys = function(req, res) {
+// get just the dates in history
+exports.listHistoryDates = function(req, res) {
   History.find(function(err, times) {
-    res.send(Object.keys(times));
+    res.send(times.map(function(time) { return time.date; }));
   });
 };
 

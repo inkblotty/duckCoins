@@ -36,7 +36,7 @@
 - begin aggregating data from all current rates
 
 ### Day 4
-- 4.5 hours
+- 6 hours
 - connecting to poloniex and coincap server-side
 - grabbing high/low values for each coin
 - rendering rates and best exchanges client side

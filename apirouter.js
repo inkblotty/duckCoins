@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var rp = require('request-promise');
 
+var dateTimeFormat = require('./helpers/formatters.js').dateTimeFormat;
 var api = require('./api.js');
 
 // database routes
@@ -18,7 +19,7 @@ router.get('/', function(req, res) {
   res.end('<br>'+':)')
 });
 router.get('/history', api.listHistory);
-router.get('/dates', api.listHistoryKeys);
+router.get('/dates', api.listHistoryDates);
 router.get('/history/:dateTime', api.findOneTime);
 router.post('/addTime', api.addTime);
 
@@ -27,6 +28,7 @@ router.post('/addTime', api.addTime);
 router.get('/latest', function(req, res, next) {
   var info = {
     currentCoins: {
+      'date': dateTimeFormat(new Date()),
       'btc-e' : {},
       'poloniex': {},
       'coincap': {}
@@ -120,7 +122,11 @@ router.get('/latest', function(req, res, next) {
 
   Promise.all(promiseList)
     .then(() => {
-      res.send(info);
+      api.addTimeInternal(info.currentCoins)
+        .save()
+        .then(() => {
+          res.send(info);
+        });
     });
 });
 

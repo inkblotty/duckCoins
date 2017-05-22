@@ -10,6 +10,7 @@ var PORT = 8080;
 var app = express();
 
 // connect to the database
+mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/cryptodb');
 var db = mongoose.connection;
 db.on('error', function(err) {
