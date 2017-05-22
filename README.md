@@ -13,8 +13,7 @@ a cryptocurrency comparison app
 - run a local version of mongo (`mongod` in one window, `mongo` in another) and `use cryptodb`
 - For development:
   -- run `npm run dev`
-- For production:
-  -- run `npm run prod` to bundle your resources, then `npm start`
+  ( production scripts incomplete )
 
 ## Log:
 #### Day 1
