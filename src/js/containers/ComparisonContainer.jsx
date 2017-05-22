@@ -100,16 +100,25 @@ class ComparisonContainer extends React.Component {
     }
   };
 
+  getDatesLoop = () => {
+    this.timer1 = window.setTimeout(() => {
+      this.getAllDates();
+      this.getDatesLoop();
+    }, 300000);
+  }
+
+  componentWillUnmount = () => {
+    clearTimeout(this.timer1);
+  };
+
   componentDidMount = () => {
     this.setState({
       loadingMessage: 'Grabbing exchange rates...'
     }, () => {
-      // axios.get('/api/delete');
       this.getLatest();
       this.getAllDates();
+      this.getDatesLoop();
     });
-
-    window.setTimeout(() => { this.getAllDates(); }, 300000);
   }
 
   render() {

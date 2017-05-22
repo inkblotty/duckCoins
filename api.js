@@ -19,6 +19,7 @@ exports.addTime = function(req, res) {
     });
 };
 
+// for debugging only
 exports.deleteAll = function(req, res) {
   History.remove({}, function(err) {
     res.send('end');

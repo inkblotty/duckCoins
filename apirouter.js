@@ -21,9 +21,6 @@ router.get('/dates', api.listHistoryDates);
 router.get('/history/:dateTime', api.findOneTime);
 router.post('/addTime', api.addTime);
 
-// for debugging
-router.get('/delete', api.deleteAll);
-
 // returns latest rates from btc-e, poloniex, and coincap
 router.get('/latest', api.callExternalAPIs);
 
