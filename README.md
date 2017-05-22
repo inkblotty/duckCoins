@@ -1,4 +1,5 @@
-# Cryptocurrency comparison app
+# Duck Coins
+a cryptocurrency comparison app
 
 ### built with Node, React, and Mongo DB
 
@@ -10,7 +11,7 @@
 
 ## Use:
 - run a local version of mongo (`mongod` in one window, `mongo` in another) and `use cryptodb`
-- For developmernt:
+- For development:
   -- run `npm run dev`
 - For production:
   -- run `npm run prod` to bundle your resources, then `npm start`
