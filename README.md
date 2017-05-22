@@ -7,7 +7,7 @@ a cryptocurrency comparison app
 - Stores currency data inside local MongoDB for comparisons
 - API routes listed through `/api`
 
-** plus configures bitcoind to create 3 bitcoin addresses
+~~ ** plus configures bitcoind to create 3 bitcoin addresses ~~ incomplete
 
 ## Use:
 - run a local version of mongo (`mongod` in one window, `mongo` in another) and `use cryptodb`
